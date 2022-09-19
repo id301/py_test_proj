@@ -1,15 +1,22 @@
 import pytest
-import requests
 
-from configuration import SERVICE2_URL
+from random import randrange
+
+@pytest.fixture
+def get_number():
+    return randrange(1, 1000, 5)
 
 
-@pytest.fixture(scope="session", autouse=True)
-def say_hello():
-    print("hello")
-    return 14
+def _calculate(a, b):
+    return a + b
 
-@pytest.fixture(scope="function")
-def get_users():
-    response = requests.get(SERVICE2_URL)
-    return response
+@pytest.fixture
+def calculate():
+    return _calculate
+
+@pytest.fixture
+def make_number():
+    print("Im getting number")
+    number = randrange(1, 1000, 5)
+    yield #number
+    print(f"Number at home {number}")
