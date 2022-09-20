@@ -6,7 +6,7 @@ from configuration import SERVICE2_URL
 
 @pytest.fixture(scope="session", autouse=True)
 def say_hello():
-    print("hello")
+    #print("hello")
     return 14
 
 @pytest.fixture(scope="function")
